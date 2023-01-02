@@ -1,10 +1,12 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { Button, Center, Heading, useToast, VStack } from "@chakra-ui/react";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as yup from "yup";
 import { AppInput } from "../components/AppInput";
+import { useAppDispatch } from "../store";
 import { useLoginMutation } from "../store/api";
+import { setToken } from "../store/auth.slice";
 
 type FormType = {
   email: string;
@@ -29,15 +31,20 @@ export const LoginPage = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const toast = useToast();
+
   function onSubmit(values: any) {
     login(values)
       .unwrap()
-      .then(() => {
+      .then((res) => {
         toast({
           title: "Logged in.",
           status: "success",
         });
+        dispatch(setToken(res.id));
+        navigate("/dashboard");
       })
       .catch((err) => {
         toast({
@@ -45,6 +52,7 @@ export const LoginPage = () => {
           description: err.data?.message,
           status: "error",
         });
+        console.log(err);
       });
   }
 
@@ -75,7 +83,8 @@ export const LoginPage = () => {
             </Button>
           </VStack>
           <Link to="/register">Register here</Link>
-          <Link to="/recover">recover your account here</Link>
+          {/* TODO */}
+          {/* <Link to="/recover">recover your account here</Link> */}
         </VStack>
       </form>
     </Center>

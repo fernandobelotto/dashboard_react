@@ -1,9 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 
-type Props = {};
-
-export const Layout = (props: Props) => {
+export const Layout = () => {
   return (
     <div>
       <ColorModeSwitcher />
