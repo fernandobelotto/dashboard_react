@@ -1,0 +1,20 @@
+{
+  "name": "auth_flow",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "workspaces": [
+    "web",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:web\" \"npm:dev:backend\"",
+    "dev:backend": "npm run start:dev -w backend",
+    "dev:web": "npm run dev -w web"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

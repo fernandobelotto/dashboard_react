@@ -1,0 +1,42 @@
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+  Input,
+  InputProps,
+} from "@chakra-ui/react";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
+
+type Props<T extends Partial<FieldValues>> = InputProps & {
+  control: Control<T>;
+  name: Path<T>;
+  label?: string;
+  helperText?: string;
+  errors: any;
+};
+
+export const AppInput = <T extends FieldValues>({
+  control,
+  name,
+  label,
+  helperText,
+  errors,
+  ...props
+}: Props<T>) => {
+  return (
+    <FormControl isInvalid={!!errors?.[name]}>
+      {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
+      <Controller
+        control={control}
+        name={name}
+        render={({ field }) => <Input {...props} {...field} />}
+      />
+      {!!errors?.[name] ? (
+        <FormErrorMessage>{errors?.[name].message}</FormErrorMessage>
+      ) : (
+        <FormHelperText>{helperText}</FormHelperText>
+      )}
+    </FormControl>
+  );
+};
