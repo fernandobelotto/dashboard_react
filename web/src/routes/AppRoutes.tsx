@@ -1,10 +1,14 @@
 import { Route, Routes } from "react-router-dom";
+import { DashboardLayout } from "../components/dashboard/DashboardLayout";
 import { Layout } from "../components/Layout";
-import { DashboardPage } from "../pages/DashboardPage";
+import { EntitiesPage } from "../pages/EntitiesPage";
+import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { RecoverPage } from "../pages/RecoverPage";
 import { RegisterPage } from "../pages/RegisterPage";
+import { SettingsPage } from "../pages/SettingsPage";
+import { UsersPage } from "../pages/UsersPage";
 import { PublicAuth } from "./PublicAuth";
 import { RequireAuth } from "./RequireAuth";
 
@@ -12,7 +16,7 @@ export default function AppRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/">
           <Route
             index
             element={
@@ -38,13 +42,18 @@ export default function AppRoutes() {
             }
           />
           <Route
-            path="dashboard"
+            path="/dashboard"
             element={
               <RequireAuth>
-                <DashboardPage />
+                <DashboardLayout />
               </RequireAuth>
             }
-          />
+          >
+            <Route index element={<HomePage />} />
+            <Route path="entities" element={<EntitiesPage />} />
+            <Route path="users" index element={<UsersPage />} />
+            <Route path="settings" index element={<SettingsPage />} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

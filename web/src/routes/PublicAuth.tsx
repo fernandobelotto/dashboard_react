@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { ColorModeSwitcher } from "../components/ColorModeSwitcher";
 import { useAppSelector } from "../store";
 
 export const PublicAuth = ({ children }: { children: JSX.Element }) => {
@@ -9,5 +10,11 @@ export const PublicAuth = ({ children }: { children: JSX.Element }) => {
     return <Navigate to="/dashboard" state={{ from: location }} replace />;
   }
 
-  return children;
+  return (
+    <>
+      <ColorModeSwitcher />
+
+      {children}
+    </>
+  );
 };
