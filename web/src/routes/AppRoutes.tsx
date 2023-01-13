@@ -5,6 +5,7 @@ import { EntitiesPage } from "../pages/EntitiesPage";
 import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
+import { AccountPage } from "../pages/private/AccountPage";
 import { RecoverPage } from "../pages/RecoverPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { SettingsPage } from "../pages/SettingsPage";
@@ -53,6 +54,7 @@ export default function AppRoutes() {
             <Route path="entities" element={<EntitiesPage />} />
             <Route path="users" index element={<UsersPage />} />
             <Route path="settings" index element={<SettingsPage />} />
+            <Route path="account" index element={<AccountPage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

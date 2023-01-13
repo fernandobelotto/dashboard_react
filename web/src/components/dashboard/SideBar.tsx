@@ -1,8 +1,16 @@
-import { Button, Divider, Heading, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Divider,
+  Heading,
+  useBreakpointValue,
+  useColorMode,
+  VStack,
+} from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 
 export function SideBar() {
   let location = useLocation();
+  const { colorMode } = useColorMode();
 
   return (
     <VStack p={3}>
@@ -16,7 +24,7 @@ export function SideBar() {
       <Divider />
       <Button
         border={location.pathname === "/dashboard/users" ? "1px solid" : "none"}
-        borderColor="gray.700"
+        borderColor={colorMode === "light" ? "gray.700" : "gray.300"}
         w="full"
         as={Link}
         to="/dashboard/users"
@@ -25,8 +33,10 @@ export function SideBar() {
         Users
       </Button>
       <Button
-        border={location.pathname === "/dashboard/entities" ? "1px solid" : "none"}
-        borderColor="gray.700"
+        border={
+          location.pathname === "/dashboard/entities" ? "1px solid" : "none"
+        }
+        borderColor={colorMode === "light" ? "gray.700" : "gray.300"}
         w="full"
         as={Link}
         to="/dashboard/entities"
@@ -35,8 +45,10 @@ export function SideBar() {
         Entities
       </Button>
       <Button
-        border={location.pathname === "/dashboard/settings" ? "1px solid" : "none"}
-        borderColor="gray.700"
+        border={
+          location.pathname === "/dashboard/settings" ? "1px solid" : "none"
+        }
+        borderColor={colorMode === "light" ? "gray.700" : "gray.300"}
         w="full"
         as={Link}
         to="/dashboard/settings"

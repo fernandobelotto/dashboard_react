@@ -21,7 +21,27 @@ export const api = createApi({
         body,
       }),
     }),
+
+    deleteAccount: builder.mutation({
+      query: (id) => ({
+        url: `users/${id}`,
+        method: "DELETE",
+      }),
+    }),
+
+    updateAccount: builder.mutation({
+      query: (body) => ({
+        url: `users/${body.id}`,
+        method: "PATCH",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = api;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useDeleteAccountMutation,
+  useUpdateAccountMutation,
+} = api;

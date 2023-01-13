@@ -1,6 +1,6 @@
+import { AtSignIcon, ChevronDownIcon, LockIcon } from "@chakra-ui/icons";
 import {
   Avatar,
-  Box,
   Button,
   Flex,
   Menu,
@@ -9,29 +9,44 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
-  useColorMode,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import {
-  AtSignIcon,
-  ChevronDownIcon,
-  LockIcon,
-  MoonIcon,
-  SunIcon,
-} from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store";
 import { logout } from "../../store/auth.slice";
+import { DrawerSideBar } from "./DrawerSideBar";
+import { ToggleIcon } from "./ToggleIcon";
 
 export function HeaderBar() {
-  const { toggleColorMode, colorMode } = useColorMode();
-
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  const showBurguer = useBreakpointValue(
+    {
+      base: true,
+      sm: false,
+    },
+    {
+      fallback: "md",
+    }
+  );
+
   return (
-    <Flex h="full" justify="flex-end" align="center">
-      <Box p={3}>
+    <Flex
+      h="full"
+      justify={showBurguer ? "space-between" : "flex-end"}
+      align="center"
+      p={3}
+    >
+      {showBurguer ? <DrawerSideBar /> : null}
+
+      <Flex>
+        <ToggleIcon />
         <Menu>
           <MenuButton
             display="flex"
@@ -48,23 +63,24 @@ export function HeaderBar() {
           </MenuButton>
           <MenuList>
             <MenuGroup title="Profile">
-              <MenuItem icon={<AtSignIcon />}>My Account</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  navigate("/dashboard/account");
+                }}
+                icon={<AtSignIcon />}
+              >
+                My Account
+              </MenuItem>
             </MenuGroup>
             <MenuDivider />
             <MenuGroup title="Other">
               <MenuItem onClick={handleLogout} icon={<LockIcon />}>
                 Logout
               </MenuItem>
-              <MenuItem
-                icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-                onClick={toggleColorMode}
-              >
-                Toggle {colorMode === "light" ? "Dark" : "Light"}
-              </MenuItem>
             </MenuGroup>
           </MenuList>
         </Menu>
-      </Box>
+      </Flex>
     </Flex>
   );
 }
