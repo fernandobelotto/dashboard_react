@@ -2,7 +2,6 @@ import {
   Button,
   Divider,
   Heading,
-  useBreakpointValue,
   useColorMode,
   VStack,
 } from "@chakra-ui/react";
@@ -16,10 +15,6 @@ export function SideBar() {
     <VStack p={3}>
       <Link to="/dashboard">
         <Heading size="md">Company Name</Heading>
-        {/*<Avatar*/}
-        {/*  bg="gray.700"*/}
-        {/*  size="lg"*/}
-        {/*/>*/}
       </Link>
       <Divider />
       <Button
@@ -45,16 +40,14 @@ export function SideBar() {
         Entities
       </Button>
       <Button
-        border={
-          location.pathname === "/dashboard/settings" ? "1px solid" : "none"
-        }
+        border={location.pathname === "/dashboard/roles" ? "1px solid" : "none"}
         borderColor={colorMode === "light" ? "gray.700" : "gray.300"}
         w="full"
         as={Link}
-        to="/dashboard/settings"
+        to="/dashboard/roles"
         size="sm"
       >
-        Settings
+        Roles
       </Button>
     </VStack>
   );

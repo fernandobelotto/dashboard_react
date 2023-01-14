@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import { DashboardLayout } from "../components/dashboard/DashboardLayout";
-import { Layout } from "../components/Layout";
 import { EntitiesPage } from "../pages/EntitiesPage";
 import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { AccountPage } from "../pages/private/AccountPage";
+import { RolesPage } from "../pages/private/RolesPage";
 import { RecoverPage } from "../pages/RecoverPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { SettingsPage } from "../pages/SettingsPage";
@@ -55,6 +55,7 @@ export default function AppRoutes() {
             <Route path="users" index element={<UsersPage />} />
             <Route path="settings" index element={<SettingsPage />} />
             <Route path="account" index element={<AccountPage />} />
+            <Route path="roles" index element={<RolesPage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

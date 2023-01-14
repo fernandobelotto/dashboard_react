@@ -1,4 +1,9 @@
-import { AtSignIcon, ChevronDownIcon, LockIcon } from "@chakra-ui/icons";
+import {
+  AtSignIcon,
+  SettingsIcon,
+  ChevronDownIcon,
+  LockIcon,
+} from "@chakra-ui/icons";
 import {
   Avatar,
   Button,
@@ -70,6 +75,14 @@ export function HeaderBar() {
                 icon={<AtSignIcon />}
               >
                 My Account
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  navigate("/dashboard/settings");
+                }}
+                icon={<SettingsIcon />}
+              >
+                Settings
               </MenuItem>
             </MenuGroup>
             <MenuDivider />
