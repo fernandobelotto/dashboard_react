@@ -1,3 +1,4 @@
+import { ShortcutProvider } from "@shopify/react-shortcuts";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -19,14 +20,16 @@ const theme = extendTheme({ colors });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </PersistGate>
-      </Provider>
-    </ChakraProvider>
+    <ShortcutProvider>
+      <ChakraProvider theme={theme}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </PersistGate>
+        </Provider>
+      </ChakraProvider>
+    </ShortcutProvider>
   </React.StrictMode>
 );

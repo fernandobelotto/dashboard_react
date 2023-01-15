@@ -44,13 +44,7 @@ function Roles() {
   ];
 
   return (
-    <SimpleGrid
-      bg="green.100"
-      columns={2}
-      spacing={3}
-      w="full"
-      minChildWidth={600}
-    >
+    <SimpleGrid columns={2} spacing={3} w="full" minChildWidth={600}>
       {roles.map((role) => (
         <VStack
           key={role.id}

@@ -18,6 +18,7 @@
     "@emotion/styled": "^11.10.0",
     "@hookform/resolvers": "^2.9.10",
     "@reduxjs/toolkit": "^1.9.1",
+    "@shopify/react-shortcuts": "^5.0.2",
     "dayjs": "^1.11.7",
     "framer-motion": "^6.5.1",
     "prettier": "^2.8.1",

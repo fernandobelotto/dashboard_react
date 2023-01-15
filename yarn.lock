@@ -2866,6 +2866,11 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@shopify/react-shortcuts@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@shopify/react-shortcuts/-/react-shortcuts-5.0.2.tgz#7de67e14193df702e1aba6fcfde465327745b1c7"
+  integrity sha512-ltuOOZmRNXcgJ0ve5FbOLT/uqfoD/udIErVynwVsFllYzvbWixXf3Q4C1VWGtIEiJeTKdUHXIbTMBGCGS6youA==
+
 "@sinclair/typebox@^0.24.1":
   version "0.24.51"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.51.tgz#645f33fe4e02defe26f2f5c0410e1c094eac7f5f"
